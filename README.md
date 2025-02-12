@@ -1,33 +1,33 @@
-# Shape and ShapeFactory Classes  
+# Database Singleton Pattern
 
-This Dart code defines an abstract `Shape` class along with concrete implementations for various shapes such as `Circle`, `Rectangle`, and `Square`. Additionally, it implements a `ShapeFactory` class to facilitate the creation of these shape instances dynamically.  
+This Dart code implements a singleton pattern using a `Database` class. The pattern ensures that only one instance of the `Database` class is created and shared throughout the application.
 
-## Classes  
+## Classes
 
-### Shape  
+### Database
 
-The `Shape` class is an abstract class that defines the contract for all shapes. It includes the following method:  
+The `Database` class follows the singleton design pattern. It provides a static method to access its single instance. It includes the following method:
 
-- `revealMe()`: A method that must be implemented by all subclasses to reveal specific information about the shape.  
+#### `getInstance()`
 
-### Circle  
+Returns the single instance of the `Database`. If the instance does not exist, it creates one.
 
-The `Circle` , `Square` , `Rectangle` class implement the `Shape` interface.   
-
-#### Methods  
-```dart  
-@override  
-void revealMe() {  
-    print("You chose to print circle - square - rectangle");  
-}
+```dart
+static Database? getInstance() {  
+    _instance ??= new Database();  
+    return _instance;  
+}  
 ```
-## ShapeFactory
-The ShapeFactory class is responsible for creating shapes based on a string input.
 
-## UseShape
-The UseShape class utilizes the ShapeFactory to get shapes dynamically based on user input.
+## Client
+-- The Client class demonstrates the usage of the Database singleton by retrieving the instance twice. It contains two properties:
 
-## Properties
-shapeFactory: An instance of ShapeFactory to generate shapes.
+* db1: A reference to the singleton instance of Database.
+* db2: Another reference to the singleton instance of Database.
 
-This code illustrates the use of an abstract class with its implementations and a factory method pattern to create objects dynamically based on user input. You can easily extend the functionality by adding more shapes or modifying the factory to include additional features as needed.
+# Main Function
+The main function creates a Client object and checks if both db1 and db2 references point to the same Database instance. It prints a message indicating whether the singleton pattern is functioning properly.
+
+## Usage
+
+This code exemplifies the singleton pattern in Dart. It ensures that the Database class maintains a single instance throughout the application's lifecycle, thus promoting resource efficiency and controlled access to shared resources.
