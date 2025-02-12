@@ -1,34 +1,33 @@
-# User and UserBuilder Classes  
+# Shape and ShapeFactory Classes  
 
-This Dart code defines a `User` class and a `UserBuilder` class that implements the Builder design pattern for creating instances of the `User` class.   
+This Dart code defines an abstract `Shape` class along with concrete implementations for various shapes such as `Circle`, `Rectangle`, and `Square`. Additionally, it implements a `ShapeFactory` class to facilitate the creation of these shape instances dynamically.  
 
 ## Classes  
 
-### User  
+### Shape  
 
-The `User` class represents a user with the following properties:  
-- `_firstName`: The first name of the user (String)  
-- `_lastName`: The last name of the user (String)  
-- `_age`: The age of the user (int)  
-- `_phone`: The phone number of the user (String)  
+The `Shape` class is an abstract class that defines the contract for all shapes. It includes the following method:  
 
-#### Constructor  
+- `revealMe()`: A method that must be implemented by all subclasses to reveal specific information about the shape.  
+
+### Circle  
+
+The `Circle` , `Square` , `Rectangle` class implement the `Shape` interface.   
+
+#### Methods  
 ```dart  
-User(this._firstName, this._lastName, this._age, this._phone);
+@override  
+void revealMe() {  
+    print("You chose to print circle - square - rectangle");  
+}
 ```
+## ShapeFactory
+The ShapeFactory class is responsible for creating shapes based on a string input.
 
-## Methods
-displayInfo(): Prints the user's information in a formatted string.
-
-UserBuilder
-The UserBuilder class is used to create User instances in a flexible way. It allows for optional attributes using method chaining.
+## UseShape
+The UseShape class utilizes the ShapeFactory to get shapes dynamically based on user input.
 
 ## Properties
- - firstName: The first name of the user (String)
- - lastName: The last name of the user (String)
- - age: The age of the user (int, optional)
- - phone: The phone number of the user (String, optional)
-## Methods
- - setAge(int age): Sets the user's age and returns the UserBuilder instance for chaining.
- - setPhone(String phone): Sets the user's phone number and returns the UserBuilder instance for chaining.
- - build(): Constructs a User object using the provided specifications.
+shapeFactory: An instance of ShapeFactory to generate shapes.
+
+This code illustrates the use of an abstract class with its implementations and a factory method pattern to create objects dynamically based on user input. You can easily extend the functionality by adding more shapes or modifying the factory to include additional features as needed.
